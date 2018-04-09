@@ -3,9 +3,10 @@
 <head>
     <title>Show the Local Weather
 </title>
-<link rel="stylesheet" type="text/css" href="style.css" />
+
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
  <body onload="geoFindMe()">
     <div class="container text-center">
@@ -20,6 +21,40 @@
 
 
 <div id="out"></div>
+<script type="text/javascript">
 
+    function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+
+ $.ajax({
+ type: "GET",
+ url: 'https://fcc-weather-api.glitch.me/api/current?lat='+latitude+'&lon='+longitude,
+ success: function(result)
+ {
+ console.log(result);
+ output.innerHTML ="<p>"+result+"</p>"
+ }
+ });
+
+  }
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+</script>
   </body>
 </html>
