@@ -3,7 +3,7 @@
 <head>
     <title>Show the Local Weather
 </title>
-<script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -42,7 +42,7 @@
  url: 'https://fcc-weather-api.glitch.me/api/current?lat='+latitude+'&lon='+longitude,
  success: function(result)
  {
- console.log("result");
+ console.log(result);
  output.innerHTML ="<p>"+result+"</p>"
  }
  });
