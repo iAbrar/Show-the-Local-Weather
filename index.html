@@ -16,13 +16,17 @@
         <h2 id="city"></h2>
         <h3 id="degree"></h3>
           <h3 id="description"></h3>
+
        <img id="img" src=""/>
+
      <h4 id="out"><h4>
 </div>
 
 
 <div id="out"></div>
 <script type="text/javascript">
+
+
 
     function geoFindMe() {
   var output = document.getElementById("out");
@@ -33,6 +37,7 @@
   }
 
   function success(position) {
+
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
 
@@ -42,15 +47,31 @@
  url: 'https://fcc-weather-api.glitch.me/api/current?lat='+latitude+'&lon='+longitude,
  success: function(result)
  {
- console.log(result);
+ var celsius=result.main.temp;
+
  document.getElementById("city").innerHTML =result.name+" "+result.sys.country;
- document.getElementById("degree").innerHTML =result.main.temp+"<a id='changetemp' href='#'> &#8451; </a>";
+ document.getElementById("degree").innerHTML =Math.round(celsius)+" &deg;<a id='changetemp' href='#'>C</a>";
  document.getElementById("description").innerHTML=result.weather["0"].main;
  $("#img").attr("src",result.weather[0].icon);
+
+$(document).on("click","#changetemp",function () {
+
+
+
+      if($(this).text() == "C" ) {
+
+        $('#degree').html(Math.round(celsius* 9 / 5 + 32)+" &deg;<a id='changetemp' href='#'>F</a>");
+
+        }
+        else $('#degree').html(Math.round(celsius)+" &deg;<a id='changetemp' href='#'>C</a>");
+
+    });
  }
+
  });
 
   }
+
   function error() {
     output.innerHTML = "Unable to retrieve your location";
   }
@@ -59,11 +80,7 @@
 
   navigator.geolocation.getCurrentPosition(success, error);
 }
-   $("#changetemp").click(function () {
-    console.log("hoi");
-       var text = $('#changetemp').text();
-       $(this).text(text == "&#8451;" ? "&#8457;" : "&#8451;");
-    });
+
 </script>
   </body>
 </html>
