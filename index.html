@@ -12,10 +12,10 @@
     <div class="container text-center">
 
       <h1>Show the Local Weather</h1>
-        <h2 id="city">city</h2>
-        <h3>degree</h3>
-          <h3>description</h3>
-        <h3>img</h3>
+        <h2 id="city"></h2>
+        <h3 id="degree"></h3>
+          <h3 id="description"></h3>
+       <img id="img" src=""/>
      <h4 id="out"><h4>
 </div>
 
@@ -36,6 +36,7 @@
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
 
+console.log("latitude"+latitude+"longitude"+longitude);
 
  $.ajax({
  type: "GET",
@@ -43,7 +44,10 @@
  success: function(result)
  {
  console.log(result);
- output.innerHTML ="<p>"+result+"</p>"
+ document.getElementById("city").innerHTML =result.name+" "+result.sys.country;
+ document.getElementById("degree").innerHTML =result.main.temp+"<span id='changetemp'> &#8451; </span>";
+ document.getElementById("description").innerHTML=result.weather["0"].main;
+ $("#img").attr("src",result.weather[0].icon);
  }
  });
 
@@ -56,6 +60,10 @@
 
   navigator.geolocation.getCurrentPosition(success, error);
 }
+   $("#changetemp").click(function () {
+       var text = $('#changetemp').text();
+       $(this).text(text == "&#8451;" ? "&#8457;" : "&#8451;");
+    });
 </script>
   </body>
 </html>
