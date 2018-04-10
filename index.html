@@ -33,11 +33,9 @@
   }
 
   function success(position) {
-    alert("it is work");
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-console.log("latitude"+latitude+"longitude"+longitude);
 
  $.ajax({
  type: "GET",
