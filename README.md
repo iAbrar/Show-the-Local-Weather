@@ -6,25 +6,6 @@ This project is a part from free code camp challenge. Please click here for the 
 
 ## Installation and Setup Instructions
 
-
-- Clone down this repository. You will need `node` and `npm` installed globally on your machine.
-
-Installation:
-
-`npm install`
-
-To Run Test Suite:
-
-`npm test`
-
-To Start Server:
-
-`npm start`
-
-To Visit App:
-
-`localhost:3000/ideas`
-or
 - Visit the app on codePen [CLICK HERE]()
 
 ## API Reference
