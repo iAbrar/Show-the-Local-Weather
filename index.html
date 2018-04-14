@@ -45,6 +45,7 @@
                url: 'https://fcc-weather-api.glitch.me/api/current?lat='+latitude+'&lon='+longitude,
                success: function(result)
                {
+                console.log(result);
                    var celsius=result.main.temp;
 
                    document.getElementById("city").innerHTML =result.name+" "+result.sys.country;

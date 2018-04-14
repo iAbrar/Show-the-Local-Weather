@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css" />
+
 </head>
 <body>
 
@@ -17,14 +18,13 @@
       <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-5">col1
-<div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
+                <div class="col-md-5 rightCol">
+                    <div id="date"></div>
+<div class="col-sm-5">
+      <button type="button" class="btn btn-sm btn-secondary btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+        <div class="handle"></div>
+      </button>
+    </div>
                 </div>
 
                 <div class="col-md-7">col2</div>
@@ -41,10 +41,36 @@
     <div class="footer-copyright text-center">
         © 2018 Copyright
     </div>
-    <!--/.Copyright-->
+    <!--/.Copyright
+
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+    -->
 
 </footer>
 <!--/.Footer-->
+  <script type="text/javascript">
+function formatDate(date) {
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
 
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return  monthNames[monthIndex] + ' ' +day + ', ' + year;
+}
+
+$('#date').html(formatDate(new Date()));  // show current date-time in console
+</script>
 </body>
 </html>
