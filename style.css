@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Martel+Sans:200');
+@import url('https://fonts.googleapis.com/css?family=Kanit:100');
 
 body{
   margin-top: 100px;
   background-color: #D5D5D5;
-font-family: 'Martel Sans', sans-serif;
+font-family: 'Kanit', sans-serif;
 }
 .card {
         margin: 0 auto; /* Added */
@@ -13,12 +13,12 @@ font-family: 'Martel Sans', sans-serif;
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 border:0;
 }
-/* the left coulomn */
+
 .card-body{
    padding: 0;
 
 }
-
+/* the right coulomn */
 .rightCol {
 height: 700px;
       border-radius: 20px 0 0 20px ;
@@ -26,6 +26,16 @@ height: 700px;
     color: #fdf3f4;
     padding: 5%;
 }
+#degree{
+    font-size: 120px;
+}
+.leftCol {
+height: 700px;
+color:#B3B3B3;
+    padding: 5%;
+}
+
+/* the left coulomn */
 
 
 /* the toggle button */
