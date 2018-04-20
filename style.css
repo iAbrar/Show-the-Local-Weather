@@ -3,25 +3,28 @@
 body{
   margin-top: 100px;
   background-color: #D5D5D5;
-font-family: 'Kanit', sans-serif;
+  font-family: 'Kanit', sans-serif;
 }
 .card {
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 10px; /* Added */
-         border-radius: 20px;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-border:0;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border:0;
 }
 
 .card-body{
-   padding: 0;
+    padding: 0;
+}
 
+hr{
+    margin-top: 0.5rem;
 }
 /* the right coulomn */
 .rightCol {
-height: 700px;
-      border-radius: 20px 0 0 20px ;
+    height: 700px;
+    border-radius: 20px 0 0 20px ;
     background: linear-gradient(to bottom right, #F3508D, #f78067);
     color: #fdf3f4;
     padding: 5%;
@@ -30,9 +33,10 @@ height: 700px;
     font-size: 120px;
 }
 .leftCol {
-height: 700px;
-color:#B3B3B3;
+    height: 700px;
+    color:#B3B3B3;
     padding: 5%;
+    font-size: 20px;
 }
 
 /* the left coulomn */
@@ -40,4 +44,4 @@ color:#B3B3B3;
 
 /* the toggle button */
 /** Switch
- -------------------------------------*/
+-------------------------------------*/
