@@ -28,3 +28,5 @@ I used this API [Free Code Camp Weather API Pass-through](https://fcc-weather-ap
 
 - Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](www.flaticon.com)
 
+- [IcoMoon](https://icomoon.io/)
+
