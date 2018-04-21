@@ -21,6 +21,12 @@ body{
 hr{
     margin-top: 0.5rem;
 }
+.bottom{
+    margin-top: 99%;
+}
+.section{
+    padding-bottom: 5%;
+}
 /* the right coulomn */
 .rightCol {
     height: 700px;

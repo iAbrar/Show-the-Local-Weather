@@ -1,73 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Show the Local Weather</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <title>Show the Local Weather</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
- <link rel="stylesheet" type="text/css" href="style.css" />
-
-
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
     <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-5 rightCol">
+                        <div id="date"></div>
+                        <div class="bottom">
+                            <div id="degree">
+                                24&deg;
+                            </div>
+                            <div id="location">
+                                Riyadh, Saudi Arabia
+                            </div>
+                            <div id="description">
+                                Sunny
+                            </div>
+                        </div>
+                    </div> <!-- END rightCol -->
 
-      <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-5 rightCol">
-                    <div id="date"></div>
-                      <div id="degree">24&deg;</div>
-                      <div id="location">Riyadh, Saudi Arabia</div>
-                         <div id="description">Sunny</div>
-  </div><!-- END rightCol -->
-
-                <div class="col-md-7 leftCol">
-Statistics <hr>
-<div class="row text-center">
-    <div class="col-3"><div class="icon-raindrops">
-
-                </div>35%</div>
-     <div class="col-3"><div class="icon-air-sock">
-
-                </div>eastry</div>
-      <div class="col-3"><div class="icon-cloud-wind">
-
-                </div>27 km</div>
-       <div class="col-3"><div class="icon-cloud">
-
-                </div>12%</div>
-
-</div>
-Weather Forecasts for Week <hr>
-<div class="row text-center">
-    <div class="col-2">Tue</div>
-     <div class="col-2">Wed</div>
-      <div class="col-2">Thur</div>
-       <div class="col-2">Fri</div>
-        <div class="col-2">Sat</div>
-         <div class="col-2">Sun</div>
-</div>
-                </div><!-- END leftCol -->
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!--Footer-->
-<footer class="page-footer font-small">
-
-    <!--Copyright-->
-    <div class="footer-copyright text-center">
-        © 2018 Copyright
-    </div>
-    <!--/.Copyright
+                    <div class="col-md-7 leftCol">
+                        <div class="section">
+                            <h4>Statistics</h4>
+                            <hr>
+                            <div class="row text-center">
+                                <div class="col-m-3 col-sm-6">
+                                    <div class="icon-raindrops"></div>35%
+                                </div>
+                                <div class="col-m-3 col-sm-6">
+                                    <div class="icon-air-sock"></div>eastry
+                                </div>
+                                <div class="col-m-3 col-sm-6">
+                                    <div class="icon-cloud-wind"></div>27 km
+                                </div>
+                                <div class="col-m-3 col-sm-6">
+                                    <div class="icon-cloud"></div>12%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section">
+                        <h4>Weather Forecasts for Week</h4>
+                        <hr>
+                            <div class="section">
+                                <div class="col-m-6">Tue</div>
+                                <div class="col-m-6">Tue</div>
+                            </div>
+                            <div class="section">
+                                <div class="col-m-6">Tue</div>
+                                <div class="col-m-6">Tue</div>
+                            </div>
+                            <div class="section">
+                                <div class="col-m-6">Tue</div>
+                                <div class="col-m-6">Tue</div>
+                            </div>
+                            <div class="section">
+                                 <div class="col-m-6">Tue</div>
+                                <div class="col-m-6">Tue</div>
+                            </div>
+                            <div class="section">
+                                 <div class="col-m-6">Tue</div>
+                                <div class="col-m-6">Tue</div>
+                            </div>
+                            <div class="section">
+                                 <div class="col-m-6">Tue</div>
+                                <div class="col-m-6">Tue</div>
+                            </div>
+                        </div>
+                    </div><!-- END leftCol -->
+                </div><!-- ENDROW -->
+            </div><!-- END CARD BODY -->
+        </div><!--END CARD-->
+    </div><!-- END container -->
+    <!--Footer-->
+    <footer class="page-footer font-small">
+        <!--Copyright-->
+        <div class="footer-copyright text-center">
+            © 2018 Copyright
+        </div><!--/.Copyright
 
 <div class="onoffswitch">
     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
@@ -76,27 +96,25 @@ Weather Forecasts for Week <hr>
         <span class="onoffswitch-switch"></span>
     </label>
 </div>
-    -->
-
-</footer>
-<!--/.Footer-->
-  <script type="text/javascript">
-function formatDate(date) {
-  var monthNames = [
+-->
+</footer><!--/.Footer-->
+<script type="text/javascript">
+  function formatDate(date) {
+    var monthNames = [
     "January", "February", "March",
     "April", "May", "June", "July",
     "August", "September", "October",
     "November", "December"
-  ];
+    ];
 
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
 
-  return  monthNames[monthIndex] + ' ' +day + ', ' + year;
+    return  monthNames[monthIndex] + ' ' +day + ', ' + year;
 }
 
-$('#date').html(formatDate(new Date()));  // show current date-time in console
-</script>
+       $('#date').html(formatDate(new Date()));  // show current date-time in console
+   </script>
 </body>
 </html>
