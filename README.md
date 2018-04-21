@@ -25,3 +25,6 @@ I used this API [Free Code Camp Weather API Pass-through](https://fcc-weather-ap
 - [jQuery click function doesn't work after ajax call?](https://stackoverflow.com/questions/17715274/jquery-click-function-doesnt-work-after-ajax-call#comment83984892_17715303)
 
 - [EMOJI CHEAT SHEET](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
+
+- Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](www.flaticon.com)
+
