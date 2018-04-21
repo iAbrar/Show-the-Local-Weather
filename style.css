@@ -39,9 +39,9 @@ hr{
     font-size: 120px;
 }
 .leftCol {
-    height: 700px;
+    min-height: 700px;
     color:#B3B3B3;
-    padding: 5%;
+    padding: 5% 5% 0 5%;
     font-size: 20px;
 }
 

@@ -4,13 +4,15 @@
     <title>Show the Local Weather</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body onload="geoFindMe()">
     <div class="container">
         <div class="card">
             <div class="card-body">
@@ -35,16 +37,16 @@
                             <h4>Statistics</h4>
                             <hr>
                             <div class="row text-center">
-                                <div class="col-m-3 col-sm-6">
+                                <div class="col-md-3 col-sm-6">
                                     <div class="icon-raindrops"></div>35%
                                 </div>
-                                <div class="col-m-3 col-sm-6">
+                                <div class="col-md-3 col-sm-6">
                                     <div class="icon-air-sock"></div>eastry
                                 </div>
-                                <div class="col-m-3 col-sm-6">
+                                <div class="col-md-3 col-sm-6">
                                     <div class="icon-cloud-wind"></div>27 km
                                 </div>
-                                <div class="col-m-3 col-sm-6">
+                                <div class="col-md-3 col-sm-6">
                                     <div class="icon-cloud"></div>12%
                                 </div>
                             </div>
@@ -52,29 +54,29 @@
                         <div class="section">
                         <h4>Weather Forecasts for Week</h4>
                         <hr>
-                            <div class="section">
-                                <div class="col-m-6">Tue</div>
-                                <div class="col-m-6">Tue</div>
+                            <div class="row section">
+                                <div class="col-md-6">Tue</div>
+                                <div class="col-md-6">Tue</div>
                             </div>
-                            <div class="section">
-                                <div class="col-m-6">Tue</div>
-                                <div class="col-m-6">Tue</div>
+                            <div class="row section">
+                                <div class="col-md-6">Tue</div>
+                                <div class="col-md-6">Tue</div>
                             </div>
-                            <div class="section">
-                                <div class="col-m-6">Tue</div>
-                                <div class="col-m-6">Tue</div>
+                            <div class="row section">
+                                <div class="col-md-6">Tue</div>
+                                <div class="col-md-6">Tue</div>
                             </div>
-                            <div class="section">
-                                 <div class="col-m-6">Tue</div>
-                                <div class="col-m-6">Tue</div>
+                            <div class="row section">
+                                 <div class="col-md-6">Tue</div>
+                                <div class="col-md-6">Tue</div>
                             </div>
-                            <div class="section">
-                                 <div class="col-m-6">Tue</div>
-                                <div class="col-m-6">Tue</div>
+                            <div class="row section">
+                                 <div class="col-md-6">Tue</div>
+                                <div class="col-md-6">Tue</div>
                             </div>
-                            <div class="section">
-                                 <div class="col-m-6">Tue</div>
-                                <div class="col-m-6">Tue</div>
+                            <div class="row section">
+                                 <div class="col-md-6">Tue</div>
+                                <div class="col-md-6">Tue</div>
                             </div>
                         </div>
                     </div><!-- END leftCol -->
@@ -87,16 +89,7 @@
         <!--Copyright-->
         <div class="footer-copyright text-center">
             © 2018 Copyright
-        </div><!--/.Copyright
-
-<div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
--->
+        </div><!--/.Copyright-->
 </footer><!--/.Footer-->
 <script type="text/javascript">
   function formatDate(date) {
@@ -115,6 +108,62 @@
 }
 
        $('#date').html(formatDate(new Date()));  // show current date-time in console
+
+
+        function geoFindMe() {
+          var output = document.getElementById("out");
+
+          if (!navigator.geolocation){
+            output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+            return;
+        }
+
+        function success(position) {
+
+            var latitude  = position.coords.latitude;
+            var longitude = position.coords.longitude;
+//var proxy = 'https://cors-anywhere.herokuapp.com/';
+
+            $.ajax({
+               type: "GET",
+               url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/f3505ac8541a111e9581e82cc9463e2b/'+latitude+','+longitude,
+               success: function(result)
+               {
+                console.log(result);
+                   var celsius=(result.currently.temperature-32)* 5 / 9;
+
+                   document.getElementById("location").innerHTML =result.timezone;
+                   document.getElementById("degree").innerHTML =Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>";
+                   document.getElementById("description").innerHTML=result.currently.summary;
+                   $("#img").attr("src",result.currently.icon);
+
+                   $(document).on("click","#changetemp",function () {
+
+
+
+                      if($(this).text() == "C" ) {
+
+                        $('#degree').html(Math.round(celsius* 9 / 5 + 32)+"&deg;<a id='changetemp' href='#'>F</a>");
+
+                    }
+                    else $('#degree').html(Math.round(celsius)+" &deg;<a id='changetemp' href='#'>C</a>");
+
+                });
+               }
+
+           });
+
+        }
+
+        function error() {
+            output.innerHTML = "Unable to retrieve your location";
+        }
+
+
+
+        navigator.geolocation.getCurrentPosition(success, error);
+    }
+
    </script>
 </body>
 </html>
