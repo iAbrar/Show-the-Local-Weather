@@ -6,7 +6,7 @@ This project is a part from free code camp challenge. Please click here for the 
 
 ## Installation and Setup Instructions
 
-- Visit the app on codePen [CLICK HERE]()
+- Visit the app on codePen [CLICK HERE](https://codepen.io/Bero/pen/wmoJGr)
 
 ## API Reference
 I used this API [Free Code Camp Weather API Pass-through](https://fcc-weather-api.glitch.me/) to retrive the data of the current location.
