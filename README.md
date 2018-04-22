@@ -1,5 +1,5 @@
 # Show the Local Weather
-This project is a part from free code camp challenge. Please click here for the [Live site]().
+This project is a part from free code camp challenge. Please click here for the [Live site](https://iabrar.github.io/Show-the-Local-Weather/).
 
 ## Project Screen Shot(s)
 
