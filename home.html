@@ -116,7 +116,7 @@ $.ajax({
     document.getElementById("description").innerHTML=result.currently.summary;
     $("#img").attr("src",result.currently.icon);
     document.getElementById("direction").innerHTML= direction;
-    document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km";
+    document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km/h";
     document.getElementById("cloud").innerHTML=Math.round(result.currently.cloudCover*100)+"%";
     document.getElementById("rain-probability").innerHTML=Math.round(result.currently.precipProbability*100)+"%";
 
