@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body onload="geoFindMe()">
@@ -52,45 +52,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="section">
-                        <h4>Weather Forecasts for Week</h4>
-                        <hr>
-                            <div class="row section">
-                                <div class="col-md-6">Tue</div>
-                                <div class="col-md-6">Tue</div>
-                            </div>
-                            <div class="row section">
-                                <div class="col-md-6">Tue</div>
-                                <div class="col-md-6">Tue</div>
-                            </div>
-                            <div class="row section">
-                                <div class="col-md-6">Tue</div>
-                                <div class="col-md-6">Tue</div>
-                            </div>
-                            <div class="row section">
-                                 <div class="col-md-6">Tue</div>
-                                <div class="col-md-6">Tue</div>
-                            </div>
-                            <div class="row section">
-                                 <div class="col-md-6">Tue</div>
-                                <div class="col-md-6">Tue</div>
-                            </div>
-                            <div class="row section">
-                                 <div class="col-md-6">Tue</div>
-                                <div class="col-md-6">Tue</div>
-                            </div>
-                        </div>
-                    </div><!-- END leftCol -->
-                </div><!-- ENDROW -->
-            </div><!-- END CARD BODY -->
-        </div><!--END CARD-->
-    </div><!-- END container -->
-    <!--Footer-->
-    <footer class="page-footer font-small">
-        <!--Copyright-->
-        <div class="footer-copyright text-center">
-            © 2018 Copyright
-        </div><!--/.Copyright-->
+                        <div id="forecast" class="section">
+                            <h4>Weather Forecasts for Week</h4>
+                            <hr>
+
+                       </div>
+                   </div><!-- END leftCol -->
+               </div><!-- ENDROW -->
+           </div><!-- END CARD BODY -->
+       </div><!--END CARD-->
+   </div><!-- END container -->
+   <!--Footer-->
+   <footer class="page-footer font-small">
+    <!--Copyright-->
+    <div class="footer-copyright text-center">
+        © 2018 Copyright
+    </div><!--/.Copyright-->
 </footer><!--/.Footer-->
 <script type="text/javascript">
   function formatDate(date) {
@@ -111,7 +88,7 @@
        $('#date').html(formatDate(new Date()));  // show current date-time in console
 
 
-        function geoFindMe() {
+       function geoFindMe() {
           var output = document.getElementById("out");
 
           if (!navigator.geolocation){
@@ -125,58 +102,72 @@
             var longitude = position.coords.longitude;
 //var proxy = 'https://cors-anywhere.herokuapp.com/';
 
-            $.ajax({
-               type: "GET",
-               url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/f3505ac8541a111e9581e82cc9463e2b/'+latitude+','+longitude,
-               success: function(result)
-               {
-                console.log(result);
-                   var celsius=(result.currently.temperature-32)* 5 / 9;
-                   console.log(result.currently.windBearing);
-var direction = convertToDirection(result.currently.windBearing);
-                   document.getElementById("location").innerHTML =result.timezone;
-                   document.getElementById("degree").innerHTML =Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>";
-                   document.getElementById("description").innerHTML=result.currently.summary;
-                   $("#img").attr("src",result.currently.icon);
-document.getElementById("direction").innerHTML= direction;
-document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km";
-document.getElementById("cloud").innerHTML=Math.round(result.currently.cloudCover*100)+"%";
-document.getElementById("rain-probability").innerHTML=Math.round(result.currently.precipProbability*100)+"%";
-                   $(document).on("click","#changetemp",function () {
+$.ajax({
+ type: "GET",
+ url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/f3505ac8541a111e9581e82cc9463e2b/'+latitude+','+longitude,
+ success: function(result)
+ {
+    console.log(result);
+    var celsius=convertToCelsius(result.currently.temperature);
+    console.log(result.currently.windBearing);
+    var direction = convertToDirection(result.currently.windBearing);
+    document.getElementById("location").innerHTML =result.timezone;
+    document.getElementById("degree").innerHTML =Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>";
+    document.getElementById("description").innerHTML=result.currently.summary;
+    $("#img").attr("src",result.currently.icon);
+    document.getElementById("direction").innerHTML= direction;
+    document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km";
+    document.getElementById("cloud").innerHTML=Math.round(result.currently.cloudCover*100)+"%";
+    document.getElementById("rain-probability").innerHTML=Math.round(result.currently.precipProbability*100)+"%";
 
+/*
+This loop will add the forcast inf for the week
+by append them to section class
+*/
+var list= result.daily.data;// the list of days in the week
+var maxTemp; // The maximum degrre in a day
+var minTemp; // The minimum degrre in a day
 
+for (var i = 0; i < 7; i++) {
+    maxTemp = convertToCelsius(list[i].apparentTemperatureMax); // The maximum degrre in a day
+minTemp = convertToCelsius(list[i].apparentTemperatureMin);  // The minimum degrre in a day
+console.log(maxTemp,minTemp);
+$( "#forecast" ).append("<div class='row'> <div class='col-4'>day</div> <div class='col-8'>Max:"+maxTemp+" Min:"+minTemp+"</div> </div>");
+}//END FOR LOOP
 
-                      if($(this).text() == "C" ) {
+    $(document).on("click","#changetemp",function () {
 
-                        $('#degree').html(Math.round(celsius* 9 / 5 + 32)+"&deg;<a id='changetemp' href='#'>F</a>");
+      if($(this).text() == "C" ) {
 
-                    }
-                    else $('#degree').html(Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>");
+        $('#degree').html(Math.round(celsius* 9 / 5 + 32)+"&deg;<a id='changetemp' href='#'>F</a>");
 
-                });
-               }
-
-           });
-
-        }
-
-        function error() {
-            output.innerHTML = "Unable to retrieve your location";
-        }
-
-
-
-        navigator.geolocation.getCurrentPosition(success, error);
     }
-function  convertToDirection(degree){
-    if (degree>337.5) return 'Northerly';
-    if (degree>292.5) return 'North Westerly';
-    if(degree>247.5) return 'Westerly';
-    if(degree>202.5) return 'South Westerly';
-    if(degree>157.5) return 'Southerly';
-    if(degree>122.5) return 'South Easterly';
-    if(degree>67.5) return 'Easterly';
-    if(degree>22.5){return 'North Easterly';}
+    else $('#degree').html(Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>");
+
+});
+}
+
+});
+
+}
+
+function error() {
+    output.innerHTML = "Unable to retrieve your location";
+}
+
+
+
+navigator.geolocation.getCurrentPosition(success, error);
+}
+function  convertToDirection(angle){
+    if (angle>337.5) return 'Northerly';
+    if (angle>292.5) return 'North Westerly';
+    if(angle>247.5) return 'Westerly';
+    if(angle>202.5) return 'South Westerly';
+    if(angle>157.5) return 'Southerly';
+    if(angle>122.5) return 'South Easterly';
+    if(angle>67.5) return 'Easterly';
+    if(angle>22.5){return 'North Easterly';}
     return 'Northerly';
 }
    </script>
