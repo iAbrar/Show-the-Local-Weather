@@ -170,6 +170,13 @@ function  convertToDirection(angle){
     if(angle>22.5){return 'North Easterly';}
     return 'Northerly';
 }
-   </script>
+/*
+Function that received the degree in fahrenheit and return it in celsius
+*/
+function convertToCelsius(fahrenheit){
+var celsius =Math.round((fahrenheit-32)* 5 / 9);
+return celsius;
+}
+</script>
 </body>
 </html>
