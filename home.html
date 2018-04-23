@@ -29,6 +29,7 @@
                             <div id="description">
                                 Sunny
                             </div>
+
                         </div>
                     </div> <!-- END rightCol -->
 
@@ -38,7 +39,7 @@
                             <hr>
                             <div class="row text-center">
                                 <div class="col-md-3 col-sm-6">
-                                    <div class="icon-raindrops"></div>35%
+                                    <div class="icon-raindrops"></div><span id="rain-probability" ></span>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="icon-air-sock"></div><span id="direction" ></span>
@@ -47,7 +48,7 @@
                                     <div class="icon-cloud-wind"></div><span id="speed" ></span>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
-                                    <div class="icon-cloud"></div>12%
+                                    <div class="icon-cloud"></div><span id="cloud"></span>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +139,9 @@ var direction = convertToDirection(result.currently.windBearing);
                    document.getElementById("description").innerHTML=result.currently.summary;
                    $("#img").attr("src",result.currently.icon);
 document.getElementById("direction").innerHTML= direction;
-document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+"km";
+document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km";
+document.getElementById("cloud").innerHTML=Math.round(result.currently.cloudCover*100)+"%";
+document.getElementById("rain-probability").innerHTML=Math.round(result.currently.precipProbability*100)+"%";
                    $(document).on("click","#changetemp",function () {
 
 
@@ -148,7 +151,7 @@ document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed
                         $('#degree').html(Math.round(celsius* 9 / 5 + 32)+"&deg;<a id='changetemp' href='#'>F</a>");
 
                     }
-                    else $('#degree').html(Math.round(celsius)+" &deg;<a id='changetemp' href='#'>C</a>");
+                    else $('#degree').html(Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>");
 
                 });
                }
