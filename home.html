@@ -132,7 +132,7 @@ for (var i = 0; i < 7; i++) {
     maxTemp = convertToCelsius(list[i].apparentTemperatureMax); // The maximum degrre in a day
 minTemp = convertToCelsius(list[i].apparentTemperatureMin);  // The minimum degrre in a day
 console.log(maxTemp,minTemp);
-$( "#forecast" ).append("<div class='row'> <div class='col-4'>day</div> <div class='col-8'>Max:"+maxTemp+" Min:"+minTemp+"</div> </div>");
+$( "#forecast" ).append("<div class='row'> <div class='col-4'>day</div> <div class='col-4'><span class='rose'>Max: </span>"+maxTemp+"&deg;C</div><div class='col-4'> <span class='rose'>Min: </span>"+minTemp+"&deg;C</div> </div>");
 }//END FOR LOOP
 
     $(document).on("click","#changetemp",function () {
