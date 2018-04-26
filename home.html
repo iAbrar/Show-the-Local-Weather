@@ -21,13 +21,13 @@
                         <div id="date"></div>
                         <div class="bottom">
                             <div id="degree">
-                                24&deg;
+
                             </div>
                             <div id="location">
-                                Riyadh, Saudi Arabia
+
                             </div>
                             <div id="description">
-                                Sunny
+
                             </div>
 
                         </div>
@@ -109,7 +109,6 @@ $.ajax({
  {
     console.log(result);
     var celsius=convertToCelsius(result.currently.temperature);
-    console.log(result.currently.windBearing);
     var direction = convertToDirection(result.currently.windBearing);
     document.getElementById("location").innerHTML =result.timezone;
     document.getElementById("degree").innerHTML =Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>";
@@ -127,12 +126,14 @@ by append them to section class
 var list= result.daily.data;// the list of days in the week
 var maxTemp; // The maximum degrre in a day
 var minTemp; // The minimum degrre in a day
+var day; // The day of the week
 
-for (var i = 0; i < 7; i++) {
+for (var i = 1; i < 8; i++) {
     maxTemp = convertToCelsius(list[i].apparentTemperatureMax); // The maximum degrre in a day
 minTemp = convertToCelsius(list[i].apparentTemperatureMin);  // The minimum degrre in a day
-console.log(maxTemp,minTemp);
-$( "#forecast" ).append("<div class='row'> <div class='col-4'>day</div> <div class='col-4'><span class='rose'>Max: </span>"+maxTemp+"&deg;C</div><div class='col-4'> <span class='rose'>Min: </span>"+minTemp+"&deg;C</div> </div>");
+day =convertToDay(list[i].time);
+
+$( "#forecast" ).append("<div class='row'> <div class='col-4 rose'>"+day+"</div> <div class='col-4'><span class='rose'>Max: </span>"+maxTemp+"&deg;C</div><div class='col-4'> <span class='rose'>Min: </span>"+minTemp+"&deg;C</div> </div>");
 }//END FOR LOOP
 
     $(document).on("click","#changetemp",function () {
@@ -176,6 +177,14 @@ Function that received the degree in fahrenheit and return it in celsius
 function convertToCelsius(fahrenheit){
 var celsius =Math.round((fahrenheit-32)* 5 / 9);
 return celsius;
+}
+/*
+Function that convert date from number to day
+*/
+function convertToDay(time){
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var day = new Date(time*1000).getDay();
+    return days[day];
 }
 </script>
 </body>
