@@ -10,7 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="css/weather-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body onload="geoFindMe()">
     <div class="container">
@@ -29,6 +30,7 @@
                             <div id="description">
 
                             </div>
+                            <i id="icon" class="wi wi-day-sunny"></i>
 
                         </div>
                     </div> <!-- END rightCol -->
@@ -113,7 +115,7 @@ $.ajax({
     document.getElementById("location").innerHTML =result.timezone;
     document.getElementById("degree").innerHTML =Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>";
     document.getElementById("description").innerHTML=result.currently.summary;
-    $("#img").attr("src",result.currently.icon);
+   // document.getElementById("#icon").className = 'newClassName';
     document.getElementById("direction").innerHTML= direction;
     document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km/h";
     document.getElementById("cloud").innerHTML=Math.round(result.currently.cloudCover*100)+"%";
