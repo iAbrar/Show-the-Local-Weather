@@ -1,5 +1,5 @@
 # Show the Local Weather
-This project is a part from free code camp challenge. Please click here for the [Live site](https://iabrar.github.io/Show-the-Local-Weather/).
+This project is a part from free code camp challenge which a website that shows the local weather :sunny: :umbrella: :cloud: :snowflake: . Please click here for the [Live site](https://iabrar.github.io/Show-the-Local-Weather/).
 
 ## Project Screen Shot(s)
 
@@ -29,4 +29,6 @@ I used this API [Free Code Camp Weather API Pass-through](https://fcc-weather-ap
 - Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](www.flaticon.com)
 
 - [IcoMoon](https://icomoon.io/)
+
+- [Weather Icons](https://erikflowers.github.io/weather-icons/)
 
