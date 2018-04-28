@@ -2,7 +2,7 @@
 This project is a part from free code camp challenge which a website that shows the local weather :sunny: :umbrella: :cloud: :snowflake: . Please click here for the [Live site](https://iabrar.github.io/Show-the-Local-Weather/).
 
 ## Project Screen Shot(s)
-![](Show-the-Local-Weather/ezgif.com-video-to-gif.gif)
+![](https://github.com/iAbrar/Show-the-Local-Weather/blob/master/ezgif.com-video-to-gif.gif)
 
 ## Installation and Setup Instructions
 
