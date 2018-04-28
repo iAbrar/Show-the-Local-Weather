@@ -18,7 +18,14 @@ body{
 .card-body{
     padding: 0;
 }
+a {
+color: #fdf3f4;
+}
 
+a:hover {
+ color:#F3508D;
+
+}
 hr{
     margin-top: 0.5rem;
 }
@@ -67,7 +74,10 @@ hr{
 .rose{
      color: #ea4c89;
 }
-
+.wi{
+  font-size: 70px;
+  padding: 3%;
+}
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
