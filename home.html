@@ -58,34 +58,34 @@
                             <h4>Weather Forecasts for Week</h4>
                             <hr>
 
-                       </div>
-                   </div><!-- END leftCol -->
-               </div><!-- ENDROW -->
-           </div><!-- END CARD BODY -->
-       </div><!--END CARD-->
-   </div><!-- END container -->
-   <!--Footer-->
-   <footer class="page-footer font-small">
-    <!--Copyright-->
-    <div class="footer-copyright text-center">
-        © 2018 Copyright
-    </div><!--/.Copyright-->
-</footer><!--/.Footer-->
-<script type="text/javascript">
-  function formatDate(date) {
-    var monthNames = [
-    "January", "February", "March",
-    "April", "May", "June", "July",
-    "August", "September", "October",
-    "November", "December"
-    ];
+                        </div>
+                    </div><!-- END leftCol -->
+                </div><!-- ENDROW -->
+            </div><!-- END CARD BODY -->
+        </div><!--END CARD-->
+    </div><!-- END container -->
+    <!--Footer-->
+    <footer class="page-footer font-small">
+        <!--Copyright-->
+        <div class="footer-copyright text-center">
+            © 2018 Copyright
+        </div><!--/.Copyright-->
+    </footer><!--/.Footer-->
+    <script type="text/javascript">
+      function formatDate(date) {
+        var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+        ];
 
-    var day = date.getDate();
-    var monthIndex = date.getMonth();
-    var year = date.getFullYear();
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
 
-    return  monthNames[monthIndex] + ' ' +day + ', ' + year;
-}
+        return  monthNames[monthIndex] + ' ' +day + ', ' + year;
+    }
 
        $('#date').html(formatDate(new Date()));  // show current date-time in console
 
@@ -105,48 +105,70 @@
 //var proxy = 'https://cors-anywhere.herokuapp.com/';
 
 $.ajax({
- type: "GET",
- url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/f3505ac8541a111e9581e82cc9463e2b/'+latitude+','+longitude,
- success: function(result)
- {
+   type: "GET",
+   url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/f3505ac8541a111e9581e82cc9463e2b/'+latitude+','+longitude,
+   success: function(result)
+   {
     console.log(result);
-    var celsius=convertToCelsius(result.currently.temperature);
+    var degree=convertToCelsius(result.currently.temperature);
     var direction = convertToDirection(result.currently.windBearing);
     document.getElementById("location").innerHTML =result.timezone;
-    document.getElementById("degree").innerHTML =Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>";
+    document.getElementById("degree").innerHTML =degree+"&deg;<a id='changetemp' href='#'>C</a>";
     document.getElementById("description").innerHTML=result.currently.summary;
    // document.getElementById("#icon").className = 'newClassName';
-    document.getElementById("direction").innerHTML= direction;
-    document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km/h";
-    document.getElementById("cloud").innerHTML=Math.round(result.currently.cloudCover*100)+"%";
-    document.getElementById("rain-probability").innerHTML=Math.round(result.currently.precipProbability*100)+"%";
+   document.getElementById("direction").innerHTML= direction;
+   document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km/h";
+   document.getElementById("cloud").innerHTML=Math.round(result.currently.cloudCover*100)+"%";
+   document.getElementById("rain-probability").innerHTML=Math.round(result.currently.precipProbability*100)+"%";
 
 /*
 This loop will add the forcast inf for the week
 by append them to section class
 */
+var temperatures = [];
+
 var list= result.daily.data;// the list of days in the week
 var maxTemp; // The maximum degrre in a day
 var minTemp; // The minimum degrre in a day
 var day; // The day of the week
-
+for (var i = 1; i < 8; i++) {
+    temperatures.push({"fahrenheit":{"max":Math.round(list[i].apparentTemperatureMax),"min":Math.round(list[i].apparentTemperatureMin)},"celsius":{"max":convertToCelsius(list[i].apparentTemperatureMax),"min":convertToCelsius(list[i].apparentTemperatureMin)}});
+}
+console.log(temperatures);
 for (var i = 1; i < 8; i++) {
     maxTemp = convertToCelsius(list[i].apparentTemperatureMax); // The maximum degrre in a day
 minTemp = convertToCelsius(list[i].apparentTemperatureMin);  // The minimum degrre in a day
 day =convertToDay(list[i].time);
 
-$( "#forecast" ).append("<div class='row'> <div class='col-4 rose'>"+day+"</div> <div class='col-4'><span class='rose'>Max: </span>"+maxTemp+"&deg;C</div><div class='col-4'> <span class='rose'>Min: </span>"+minTemp+"&deg;C</div> </div>");
+$( "#forecast" ).append("<div class='row'> <div class='col-4 rose'>"+day+"</div> <div class='col-4'><span class='rose'>Max: </span><span class='max'>"+maxTemp+"&deg;C</span></div><div class='col-4'> <span class='rose'>Min: </span><span class='min'>"+minTemp+"&deg;C</span></div> </div>");
 }//END FOR LOOP
 
-    $(document).on("click","#changetemp",function () {
+/*
+This to trigger any click in the degree to toggle between C and F
 
-      if($(this).text() == "C" ) {
+*/
+var maxArr=document.getElementsByClassName("max");// this object contain all max span
 
-        $('#degree').html(Math.round(celsius* 9 / 5 + 32)+"&deg;<a id='changetemp' href='#'>F</a>");
+var minArr=document.getElementsByClassName("min");// this object contain all max span
+$(document).on("click","#changetemp",function () {
 
-    }
-    else $('#degree').html(Math.round(celsius)+"&deg;<a id='changetemp' href='#'>C</a>");
+  if($(this).text() == "C" ) {
 
+    $('#degree').html(convertToFahrenheit(degree)+"&deg;<a id='changetemp' href='#'>F</a>");
+    for (var i = 0; i < temperatures.length; i++) {
+     maxArr[i].innerHTML=(temperatures[i].fahrenheit.max+" &deg;F");
+     minArr[i].innerHTML=(temperatures[i].fahrenheit.min+" &deg;F");
+ }
+
+
+}
+else {
+    $('#degree').html(degree+"&deg;<a id='changetemp' href='#'>C</a>");
+    for (var i = 0; i < temperatures.length; i++) {
+       maxArr[i].innerHTML=temperatures[i].celsius.max+" &deg;C";
+       minArr[i].innerHTML=temperatures[i].celsius.min+" &deg;C";
+   }
+}
 });
 }
 
@@ -157,7 +179,6 @@ $( "#forecast" ).append("<div class='row'> <div class='col-4 rose'>"+day+"</div>
 function error() {
     output.innerHTML = "Unable to retrieve your location";
 }
-
 
 
 navigator.geolocation.getCurrentPosition(success, error);
@@ -177,15 +198,23 @@ function  convertToDirection(angle){
 Function that received the degree in fahrenheit and return it in celsius
 */
 function convertToCelsius(fahrenheit){
-var celsius =Math.round((fahrenheit-32)* 5 / 9);
-return celsius;
+    var celsius =Math.round((fahrenheit-32)* 5 / 9);
+    return celsius;
+}
+
+/*
+Function that received the degree in celsius and return it in fahrenheit
+*/
+function convertToFahrenheit(celsius){
+    var fahrenheit =Math.round(celsius* 9 / 5 + 32);
+    return fahrenheit;
 }
 /*
 Function that convert date from number to day
 */
 function convertToDay(time){
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var day = new Date(time*1000).getDay();
+    var day = new Date(time*1000).getDay();
     return days[day];
 }
 </script>
