@@ -109,13 +109,11 @@ $.ajax({
    url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/f3505ac8541a111e9581e82cc9463e2b/'+latitude+','+longitude,
    success: function(result)
    {
-    console.log(result);
     var degree=convertToCelsius(result.currently.temperature);
     var direction = convertToDirection(result.currently.windBearing);
     document.getElementById("location").innerHTML =result.timezone;
     document.getElementById("degree").innerHTML =degree+"&deg;<a id='changetemp' href='#'>C</a>";
     document.getElementById("description").innerHTML=result.currently.summary;
-    console.log(result.currently.icon);
     document.getElementById("icon").className = changeIcon(result.currently.icon);
     document.getElementById("direction").innerHTML= direction;
     document.getElementById("speed").innerHTML=Math.round(result.currently.windSpeed)+" km/h";
